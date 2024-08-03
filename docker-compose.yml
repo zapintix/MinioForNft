@@ -2,6 +2,9 @@ version: '3.3'
 
 services:
   minio:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: minio/minio:latest
     ports:
       - "9000:9000"
