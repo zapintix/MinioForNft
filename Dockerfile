@@ -1,6 +1,6 @@
-FROM minio/minio
+FROM minio/minio:latest
 
-ENV MINIO_ROOT_USER=${AWS_ACCESS_KEY_ID}
-ENV MINIO_ROOT_PASSWORD=${AWS_SECRET_ACCESS_KEY}
+ENV MINIO_ROOT_USER=admin
+ENV MINIO_ROOT_PASSWORD=password
 
 CMD ["server", "/data", "--console-address", ":9001"]
