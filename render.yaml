@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: minio
+    env:
+      MINIO_ACCESS_KEY:  ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY:  ${MINIO_ROOT_PASSWORD}
+    port: 9001
+    docker:
+      image: minio/minio:latest
+      volumes:
+        - ./data:/data
