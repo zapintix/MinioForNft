@@ -1,5 +1,5 @@
 services:
-  minio:
+  - name: minio
     type: web
     plan: starter
     region: frankfurt
