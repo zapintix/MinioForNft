@@ -1,8 +1,7 @@
 FROM minio/minio:latest
 
-ENV MINIO_ROOT_USER=admin
-ENV MINIO_ROOT_PASSWORD=password
+# Установка MinIO с командой для запуска
+ENTRYPOINT ["minio", "server", "/data"]
 
-EXPOSE 9000 9001
-
-CMD ["server", "/data", "--console-address", ":9001", "--address", ":9000"]
+# Порт для доступа к MinIO (по умолчанию 9000)
+EXPOSE 9000

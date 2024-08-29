@@ -1,0 +1,20 @@
+services:
+  - name: minio
+    type: web
+    env: docker
+    plan: starter # или выберите другой план, подходящий вам
+    branch: main
+    buildCommand: ""
+    startCommand: minio server /data --console-address ":9001"
+    envVars:
+      - key: MINIO_ROOT_USER
+        value: your-access-key
+      - key: MINIO_ROOT_PASSWORD
+        value: your-secret-key
+    ports:
+      - name: http
+        port: 9000
+    disk:
+      name: minio-data
+      mountPath: /data
+      sizeGB: 10 # Укажите нужный размер диска
