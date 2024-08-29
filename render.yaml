@@ -1,20 +1,18 @@
 services:
   - name: minio
     type: web
-    env: docker
-    plan: starter # или выберите другой план, подходящий вам
+    plan: starter
     branch: main
-    buildCommand: ""
-    startCommand: minio server /data --console-address ":9001"
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: MINIO_ROOT_USER
-        value: your-access-key
+        value: admin
       - key: MINIO_ROOT_PASSWORD
-        value: your-secret-key
-    ports:
-      - name: http
-        port: 9000
+        value: password
     disk:
       name: minio-data
       mountPath: /data
-      sizeGB: 10 # Укажите нужный размер диска
+      sizeGB: 10
+    healthCheckPath: /minio/health/live
+    runtime: docker

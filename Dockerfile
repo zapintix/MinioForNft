@@ -1,7 +1,11 @@
 FROM minio/minio:latest
 
+# Указываем переменные окружения для MinIO
+ENV MINIO_ROOT_USER=admin
+ENV MINIO_ROOT_PASSWORD=password
+
 # Установка MinIO с командой для запуска
 ENTRYPOINT ["minio", "server", "/data"]
 
-# Порт для доступа к MinIO (по умолчанию 9000)
-EXPOSE 9000
+# Открываем порты для MinIO
+EXPOSE 9000 9001
