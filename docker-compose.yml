@@ -1,19 +1,13 @@
-version: '3.8'
+version: "3.8"
 services:
   minio:
     image: minio/minio
-    ports:
-      - ${MINIO_API_PORT}
-      - ${MINIO_DASHBOARD_PORT}
     volumes:
       - minio-data:/data
     environment:
       - MINIO_ROOT_USER=admin
       - MINIO_ROOT_PASSWORD=password
     command: server /data --console-address ":9001"
+
 volumes:
   minio-data:
-
-networks:
-  dokploy-network:
-    external: true
